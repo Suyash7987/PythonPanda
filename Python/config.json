@@ -1,0 +1,582 @@
+{
+  "file_structures": {
+      "flat_cut_metal": {
+          "flat_cut_metal_aluminum": {
+              "file_pattern": "flat_cut_metal_aluminum .xlsx",
+              "sheets": {
+                  "Letters – Aluminum": {
+                      "type": "letters_price",
+                      "country_labels": [
+                          "US",
+                          "Canada"
+                      ],
+                      "country_column": 0,
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1,
+                      "stop_conditions": [
+                          "US",
+                          "Canada",
+                          "nan",
+                          ""
+                      ],
+                      "special_cases": {
+                          "US": {
+                              "alternative_start": "."
+                          }
+                      }
+                  },
+                  "Bars-Aluminum": {
+                      "type": "bars",
+                      "us_columns": [
+                          0,
+                          7
+                      ],
+                      "canada_columns": [
+                          7,
+                          13
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2
+                  },
+                  "US-Logos": {
+                      "type": "logos",
+                      "thickness_labels": [
+                          "1/8 Inch",
+                          "1/4 Inch",
+                          "3/8 Inch",
+                          "1/2 Inch",
+                          "3/4 Inch",
+                          "1 Inch"
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1
+                  },
+                  "Canada-Logos": {
+                      "type": "Canada_logos",
+                      "thickness_labels": [
+                          "1/8 Inch",
+                          "1/4 Inch",
+                          "3/8 Inch",
+                          "1/2 Inch",
+                          "3/4 Inch",
+                          "1 Inch"
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1
+                  }
+              }
+          },
+          "flat_cut_metal_steel": {
+              "file_pattern": "flat_cut_metal_aluminum .xlsx",
+              "sheets": {
+                  "Letters – Stainless Steel": {
+                      "type": "letters_price",
+                      "country_labels": [
+                          "US",
+                          "Canada"
+                      ],
+                      "country_column": 0,
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1,
+                      "stop_conditions": [
+                          "US",
+                          "Canada",
+                          "nan",
+                          ""
+                      ],
+                      "special_cases": {
+                          "US": {
+                              "alternative_start": "."
+                          }
+                      }
+                  },
+                  "Bars-Stainless Steel": {
+                      "type": "bars",
+                      "us_columns": [
+                          0,
+                          7
+                      ],
+                      "canada_columns": [
+                          7,
+                          13
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2
+                  },
+                  "US-Logos": {
+                      "type": "logos",
+                      "thickness_labels": [
+                          "1/8 Inch",
+                          "1/4 Inch",
+                          "3/8 Inch",
+                          "1/2 Inch",
+                          "3/4 Inch",
+                          "1 Inch"
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1
+                  },
+                  "Canada-Logos": {
+                      "type": "Canada_logos",
+                      "thickness_labels": [
+                          "1/8 Inch",
+                          "1/4 Inch",
+                          "3/8 Inch",
+                          "1/2 Inch",
+                          "3/4 Inch",
+                          "1 Inch"
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1
+                  }
+              }
+          }, 
+          "flat_cut_metal_corten": {
+              "file_pattern": "flat_cut_metal_aluminum .xlsx",
+              "sheets": {
+                  "Letters – Corten": {
+                      "type": "letters_price",
+                      "country_labels": [
+                          "US",
+                          "Canada"
+                      ],
+                      "country_column": 0,
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1,
+                      "stop_conditions": [
+                          "US",
+                          "Canada",
+                          "nan",
+                          ""
+                      ],
+                      "special_cases": {
+                          "US": {
+                              "alternative_start": "."
+                          }
+                      }
+                  },
+                  "Bars-Corten": {
+                      "type": "bars",
+                      "us_columns": [
+                          0,
+                          7
+                      ],
+                      "canada_columns": [
+                          7,
+                          13
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2
+                  },
+                  "US-Logos": {
+                      "type": "logos",
+                      "thickness_labels": [
+                          "1/8 Inch",
+                          "1/4 Inch",
+                          "3/8 Inch",
+                          "1/2 Inch",
+                          "3/4 Inch",
+                          "1 Inch"
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1
+                  },
+                  "Canada-Logos": {
+                      "type": "Canada_logos",
+                      "thickness_labels": [
+                          "1/8 Inch",
+                          "1/4 Inch",
+                          "3/8 Inch",
+                          "1/2 Inch",
+                          "3/4 Inch",
+                          "1 Inch"
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1
+                  }
+              }
+          },
+          "flat_cut_metal_copper": {
+              "file_pattern": "flat_cut_metal_aluminum .xlsx",
+              "sheets": {
+                  "Letters – Copper": {
+                      "type": "letters_price",
+                      "country_labels": [
+                          "US",
+                          "Canada"
+                      ],
+                      "country_column": 0,
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1,
+                      "stop_conditions": [
+                          "US",
+                          "Canada",
+                          "nan",
+                          ""
+                      ],
+                      "special_cases": {
+                          "US": {
+                              "alternative_start": "."
+                          }
+                      }
+                  },
+                  "Bars-Copper": {
+                      "type": "bars",
+                      "us_columns": [
+                          0,
+                          7
+                      ],
+                      "canada_columns": [
+                          7,
+                          13
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2
+                  },
+                  "US-Logos": {
+                      "type": "logos",
+                      "thickness_labels": [
+                          "1/8 Inch",
+                          "1/4 Inch",
+                          "3/8 Inch",
+                          "1/2 Inch",
+                          "3/4 Inch",
+                          "1 Inch"
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1
+                  },
+                  "Canada-Logos": {
+                      "type": "Canada_logos",
+                      "thickness_labels": [
+                          "1/8 Inch",
+                          "1/4 Inch",
+                          "3/8 Inch",
+                          "1/2 Inch",
+                          "3/4 Inch",
+                          "1 Inch"
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1
+                  }
+              }
+          },
+          "flat_cut_metal_brass_bronze": {
+              "file_pattern": "flat_cut_metal_aluminum .xlsx",
+              "sheets": {
+                  "Letters – Brass & Bronze": {
+                      "type": "letters_price",
+                      "country_labels": [
+                          "US",
+                          "Canada"
+                      ],
+                      "country_column": 0,
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1,
+                      "stop_conditions": [
+                          "US",
+                          "Canada",
+                          "nan",
+                          ""
+                      ],
+                      "special_cases": {
+                          "US": {
+                              "alternative_start": "."
+                          }
+                      }
+                  },
+                  "Bars-Brass&Bronze": {
+                      "type": "bars",
+                      "us_columns": [
+                          0,
+                          7
+                      ],
+                      "canada_columns": [
+                          7,
+                          13
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2
+                  },
+                  "US-Logos": {
+                      "type": "logos",
+                      "thickness_labels": [
+                          "1/8 Inch",
+                          "1/4 Inch",
+                          "3/8 Inch",
+                          "1/2 Inch",
+                          "3/4 Inch",
+                          "1 Inch"
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1
+                  },
+                  "Canada-Logos": {
+                      "type": "Canada_logos",
+                      "thickness_labels": [
+                          "1/8 Inch",
+                          "1/4 Inch",
+                          "3/8 Inch",
+                          "1/2 Inch",
+                          "3/4 Inch",
+                          "1 Inch"
+                      ],
+                      "header_row_offset": 1,
+                      "data_start_offset": 2,
+                      "thickness_column": 0,
+                      "price_start_column": 1
+                  }
+              }
+          }
+      },
+      "gemleaf": {
+          "file_pattern": "gemleaf.xlsx",
+          "sheets": {
+              "Letters": {
+                  "type": "letters_price",
+                  "country_labels": [
+                      "US",
+                      "Canada"
+                  ],
+                  "country_column": 0,
+                  "header_row_offset": 1,
+                  "data_start_offset": 2,
+                  "thickness_column": 0,
+                  "price_start_column": 1,
+                  "stop_conditions": [
+                      "US",
+                      "Canada",
+                      "nan",
+                      ""
+                  ],
+                  "special_cases": {
+                      "US": {
+                          "alternative_start": "."
+                      }
+                  }
+              },
+              "US-Logos": {
+                  "type": "logos",
+                  "thickness_labels": [
+                      "1/8 Inch",
+                      "1/4 Inch",
+                      "3/8 Inch",
+                      "1/2 Inch",
+                      "3/4 Inch",
+                      "1 Inch"
+                  ],
+                  "header_row_offset": 1,
+                  "data_start_offset": 2,
+                  "thickness_column": 0,
+                  "price_start_column": 1
+              },
+              "Canada-Logos": {
+                  "type": "logos",
+                  "thickness_labels": [
+                      "1/8 Inch",
+                      "1/4 Inch",
+                      "3/8 Inch",
+                      "1/2 Inch",
+                      "3/4 Inch",
+                      "1 Inch"
+                  ],
+                  "header_row_offset": 1,
+                  "data_start_offset": 2,
+                  "thickness_column": 0,
+                  "price_start_column": 1
+              },
+              "Bars": {
+                  "type": "bars",
+                  "us_columns": [
+                      0,
+                      7
+                  ],
+                  "canada_columns": [
+                      7,
+                      13
+                  ],
+                  "header_row_offset": 1,
+                  "data_start_offset": 2
+              }
+          }
+      },
+      "flat_cut_pvc": {
+          "file_pattern": "flat_cut_pvc .xlsx",
+          "sheets": {
+              "Letters PVC": {
+                  "type": "letters_price",
+                  "country_labels": [
+                      "US",
+                      "Canada"
+                  ],
+                  "country_column": 0,
+                  "header_row_offset": 1,
+                  "data_start_offset": 2,
+                  "thickness_column": 0,
+                  "price_start_column": 1,
+                  "stop_conditions": [
+                      "US",
+                      "Canada",
+                      "nan",
+                      ""
+                  ],
+                  "special_cases": {
+                      "US": {
+                          "alternative_start": "."
+                      }
+                  }
+              },
+              "US-Logos PVC": {
+                  "type": "logos",
+                  "thickness_labels": [
+                      "1/8 Inch",
+                      "1/4 Inch",
+                      "3/8 Inch",
+                      "1/2 Inch",
+                      "3/4 Inch",
+                      "1 Inch"
+                  ],
+                  "header_row_offset": 1,
+                  "data_start_offset": 2,
+                  "thickness_column": 0,
+                  "price_start_column": 1
+              },
+              "Canada-Logos PVC": {
+                  "type": "logos",
+                  "thickness_labels": [
+                      "1/8 Inch",
+                      "1/4 Inch",
+                      "3/8 Inch",
+                      "1/2 Inch",
+                      "3/4 Inch",
+                      "1 Inch"
+                  ],
+                  "header_row_offset": 1,
+                  "data_start_offset": 2,
+                  "thickness_column": 0,
+                  "price_start_column": 1
+              },
+              "Bars (PVC)": {
+                  "type": "bars",
+                  "us_columns": [
+                      0,
+                      7
+                  ],
+                  "canada_columns": [
+                      7,
+                      13
+                  ],
+                  "header_row_offset": 1,
+                  "data_start_offset": 2
+              }
+          }
+      },
+      "laminate_on_foam": {
+        "file_pattern": "laminate_on_foam.xlsx",
+        "sheets": {
+            "Letters": {
+                "type": "letters_price",
+                "country_labels": [
+                    "us",
+                    "canada"
+                ],
+                "country_column": 0,
+                "header_row_offset": 1,
+                "data_start_offset": 2,
+                "thickness_column": 0,
+                "price_start_column": 1,
+                "stop_conditions": [
+                    "us",
+                    "canada",
+                    "nan",
+                    ""
+                ],
+                "special_cases": {
+                    "US": {
+                        "alternative_start": "."
+                    }
+                }
+            },
+            "US-Logos Foam": {
+                "type": "logos",
+                "thickness_labels": [
+                    "1/8 Inch",
+                    "1/4 Inch",
+                    "3/8 Inch",
+                    "1/2 Inch",
+                    "3/4 Inch",
+                    "1 Inch"
+                ],
+                "header_row_offset": 1,
+                "data_start_offset": 2,
+                "thickness_column": 0,
+                "price_start_column": 1
+            },
+            "Canada-Logos Foam": {
+                "type": "logos",
+                "thickness_labels": [
+                    "1/8 Inch",
+                    "1/4 Inch",
+                    "3/8 Inch",
+                    "1/2 Inch",
+                    "3/4 Inch",
+                    "1 Inch"
+                ],
+                "header_row_offset": 1,
+                "data_start_offset": 2,
+                "thickness_column": 0,
+                "price_start_column": 1
+            },
+            "Bars": {
+                "type": "bars",
+                "us_columns": [
+                    0, 
+                    7 
+                ],
+                "canada_columns": [
+                    7, 
+                    13 
+                ],
+                "header_row_offset": 1,
+                "data_start_offset": 2
+            }
+        }
+    },
+    "cast_metal":{
+      "file_pattern": "cast_metal.xlsx",
+      "sheets": {
+        "Letters – Fonts":{
+          
+        }
+      }
+  }
+}
+}
