@@ -295,22 +295,46 @@
 
 # ================================================================================================================================
 import json
+from pathlib import Path
 import pandas as pd
+
+from src.upcharges import get_upcharge
 
 # ===============================
 # LOAD CONFIG
 # ===============================
-with open("config.json", "r") as f:
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+with open(BASE_DIR / "config.json", "r") as f:
     CONFIG = json.load(f)
 
 
 # ===============================
 # MAIN FUNCTION
 # ===============================
-def get_price(category, sheet_name, params, product=None):
+def get_price(product_line, sheet_name, params, product=None, upcharge=None):
+    """
+    product_line can be:
+    - productLineKey  (example: "cut-metal")
+    - productLineName (example: "Flat Cut Metal")
+    """
 
-    cat_cfg = CONFIG["file_structures"][category]
+    # ---------------------------------
+    # Find the correct category from config
+    # ---------------------------------
+    cat_cfg = None
+    for category_key, cfg in CONFIG["file_structures"].items():
+        if cfg.get("productLineKey") == product_line:
+            cat_cfg = cfg
+            break
+        if cfg.get("productLineName") == product_line:
+            cat_cfg = cfg
+            break
 
+    if cat_cfg is None:
+        raise ValueError(
+            "Unknown product line. Use productLineKey or productLineName."
+        )
     # -----------------------
     # FIND FILE & SHEETS
     # -----------------------
@@ -321,27 +345,38 @@ def get_price(category, sheet_name, params, product=None):
     else:
         file_name = cat_cfg["file_pattern"].strip()
         sheets = cat_cfg["productlineFile"]
-
     sheet_cfg = sheets[sheet_name]
     sheet_type = sheet_cfg["type"]
-
-    df = pd.read_excel(file_name, sheet_name=sheet_name, header=None)
-
+    df = pd.read_excel(BASE_DIR / file_name, sheet_name=sheet_name, header=None)
     # -----------------------
     # CALL PARSER
     # -----------------------
     if sheet_type == "letters_price":
-        return parse_letters(df, sheet_cfg, params)
+        base_price = parse_letters(df, sheet_cfg, params)
 
     elif sheet_type == "bars":
-        return parse_bars(df, sheet_cfg, params)
+        base_price = parse_bars(df, sheet_cfg, params)
 
-    elif sheet_type in ("logos"):
-        return parse_logos(df, sheet_cfg, params)
+    elif sheet_type in ("logos", "Canada_logos"):
+        base_price = parse_logos(df, sheet_cfg, params)
 
     else:
-        raise ValueError("Only letters and bars supported in beginner version")
+        raise ValueError("Only letters, bars, and logos supported in beginner version")
 
+    # ---------------------------------
+    # Optional upcharge( For testing only)
+    # ---------------------------------
+    # upcharge_value = None
+    # if upcharge:
+    #     upcharge_value = get_upcharge(
+    #         product_line=upcharge["product_line"],
+    #         material=upcharge["material"],
+    #         category=upcharge["category"],
+    #         finish_type=upcharge["finish_type"],
+    #         country=upcharge["country"],
+    #     )
+
+    return base_price
 
 # ===============================
 # LETTERS PARSER (SIMPLE)
@@ -487,36 +522,49 @@ def parse_logos(df, cfg, params):
 # TEST EXAMPLES
 # ===============================
 
-print("Flat Cut PVC Letters Price:",
-    get_price(
-        "FLAT_CUT_PVC",
-        "Letters PVC",
-        {"country": "US", "thickness": "1-1/2", "column": 2},
+if __name__ == "__main__":
+    # Simple test calls (only run when this file is executed directly)
+    print(
+        "Flat Cut PVC Letters Price:",
+        get_price(
+            "flat-cut-pvc",
+            "Letters PVC",
+            {"country": "US", "thickness": "1-1/2", "column": 2},
+            upcharge={
+                "product_line": "FLAT_CUT_METAL",
+                "material": "Stainless Steel",
+                "category": "Mounting Option",
+                "finish_type": "Double Faced Tape",
+                "country": "US",
+            },
+        ),
     )
-)
 
-print("Flat Cut Metal Aluminum Bars Price:",
-    get_price(
-        "FLAT_CUT_METAL",
-        "Bars-Aluminum",
-        {"label": 'US 1/8"', "depth": 36, "height": 5},
-        "flat_cut_metal_aluminum",
+    # Uncomment for more tests:
+    print("Flat Cut Metal Aluminum Bars Price:",
+        get_price(
+            "cut-metal",
+            "Bars-Aluminum",
+            {"label": 'US 1/8"', "depth": 36, "height": 5},
+            "flat_cut_metal_aluminum",
+            
+        )
     )
-)
-print("Flat Cut Metal Aluminum Canada Logos Price:",
-    get_price(
-        "FLAT_CUT_METAL",
-        "Canada-Logos",
-        {"label": "1/8 Inch", "row": 10, "col": 24},
-        "flat_cut_metal_aluminum",
-    )
-)
-#print logos price for flat cut metal aluminum
-print("Flat Cut Metal Aluminum Logos Price:",
-    get_price(
-        "FLAT_CUT_METAL",
-        "US-Logos",
-        {"label": "1/8 Inch", "row": 10, "col": 24},
-        "flat_cut_metal_aluminum",
-    )
-)
+    
+    # print("Flat Cut Metal Aluminum Canada Logos Price:",
+    #     get_price(
+    #         "FLAT_CUT_METAL",
+    #         "Canada-Logos",
+    #         {"label": "1/8 Inch", "row": 10, "col": 24},
+    #         "flat_cut_metal_aluminum",
+    #     )
+    # )
+    #
+    # print("Flat Cut Metal Aluminum Logos Price:",
+    #     get_price(
+    #         "FLAT_CUT_METAL",
+    #         "US-Logos",
+    #         {"label": "1/8 Inch", "row": 10, "col": 24},
+    #         "flat_cut_metal_aluminum",
+    #     )
+    # )

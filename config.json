@@ -1,21 +1,29 @@
 {
   "file_structures": {
-    "FLAT_CUT_METAL": { 
+    "FLAT_CUT_METAL": {
       "productLineName": "Flat Cut Metal",
       "productLineKey": "cut-metal",
-      "productlineFile":{
+      "productlineFile": {
         "flat_cut_metal_aluminum": {
-          "file_pattern": "flat_cut_metal_aluminum .xlsx",
-          "sheets": { 
-            "Letters – Aluminum": {
+          "file_pattern": "data/flat_cut_metal_aluminum .xlsx",
+          "sheets": {
+            "Letters-Aluminum": {
               "type": "letters_price",
-              "country_labels": ["US","Canada"],
+              "country_labels": [
+                "US",
+                "Canada"
+              ],
               "country_column": 0,
               "header_row_offset": 1,
               "data_start_offset": 2,
               "thickness_column": 0,
               "price_start_column": 1,
-              "stop_conditions": ["US","Canada","nan",""],
+              "stop_conditions": [
+                "US",
+                "Canada",
+                "nan",
+                ""
+              ],
               "special_cases": {
                 "US": {
                   "alternative_start": "."
@@ -68,7 +76,7 @@
           }
         },
         "flat_cut_metal_steel": {
-          "file_pattern": "flat_cut_metal_aluminum .xlsx",
+          "file_pattern": "data/flat_cut_metal_aluminum .xlsx",
           "sheets": {
             "Letters – Stainless Steel": {
               "type": "letters_price",
@@ -139,7 +147,7 @@
           }
         },
         "flat_cut_metal_corten": {
-          "file_pattern": "flat_cut_metal_aluminum .xlsx",
+          "file_pattern": "data/flat_cut_metal_aluminum .xlsx",
           "sheets": {
             "Letters – Corten": {
               "type": "letters_price",
@@ -210,7 +218,7 @@
           }
         },
         "flat_cut_metal_copper": {
-          "file_pattern": "flat_cut_metal_aluminum .xlsx",
+          "file_pattern": "data/flat_cut_metal_aluminum .xlsx",
           "sheets": {
             "Letters – Copper": {
               "type": "letters_price",
@@ -281,7 +289,7 @@
           }
         },
         "flat_cut_metal_brass_bronze": {
-          "file_pattern": "flat_cut_metal_aluminum .xlsx",
+          "file_pattern": "data/flat_cut_metal_aluminum .xlsx",
           "sheets": {
             "Letters – Brass & Bronze": {
               "type": "letters_price",
@@ -352,49 +360,58 @@
           }
         }
       },
-      "upchargeFile": "tq_upcharges_flat_cut_metal.xlsx",
-      "upchargeFileStructure": {      
+      "upchargeFile": "data/tq_upcharges_flat_cut_metal_demo.xlsx",
+      "upchargeFileStructure": {
         "blocks": {
-        "Aluminum": {
-          "label": 0,
-          "type": 1,
-          "us": 2,
-          "canada": 3
-        },
-        "Stainless Steel": {
-          "label": 4,
-          "type": 5,
-          "us": 6,
-          "canada": 7
-        },
-        "Brass/Bronze": {
-          "label": 8,
-          "type": 9,
-          "us": 10,
-          "canada": 11
-        },
-        "Corten": {
-          "label": 12,
-          "type": 13,
-          "us": 14,
-          "canada": 15
+          "Aluminum": {
+            "label": 0,
+            "type": 1,
+            "us": 2,
+            "canada": 3
+          },
+          "Stainless Steel": {
+            "label": 4,
+            "type": 5,
+            "us": 6,
+            "canada": 7
+          },
+          "Brass/Bronze": {
+            "label": 8,
+            "type": 9,
+            "us": 10,
+            "canada": 11
+          },
+          "Corten": {
+            "label": 12,
+            "type": 13,
+            "us": 14,
+            "canada": 15
+          }
         }
-      }}
+      }
     },
     "GEMLEAF_LAMINATE": {
       "productLineName": "GemLeaf laminate",
       "productLineKey": "gemleaf",
-      "file_pattern": "gemleaf.xlsx",
+      "file_pattern": "data/gemleaf.xlsx",
       "productlineFile": {
         "Letters": {
           "type": "letters_price",
-          "country_labels": ["US","Canada"],
+          "country_labels": [
+            "US",
+            "Canada"
+          ],
           "country_column": 0,
           "header_row_offset": 1,
           "data_start_offset": 2,
           "thickness_column": 0,
           "price_start_column": 1,
-          "stop_conditions": ["US","Canada","nan","" ],
+          "stop_conditions": [
+            "US",
+            "Canada",
+            "nan",
+            ""
+          ],
           "special_cases": {
             "US": {
               "alternative_start": "."
@@ -445,15 +462,14 @@
           "data_start_offset": 2
         }
       },
-      "upchargeFile": "tq_upcharges_gemleaf.xlsx",
-      "upchargeFileStructure": {
-      }
+      "upchargeFile": "data/tq_upcharges_gemleaf.xlsx",
+      "upchargeFileStructure": {}
     },
     "FLAT_CUT_PVC": {
       "productLineName": "Flat Cut PVC",
       "productLineKey": "flat-cut-pvc",
-      "file_pattern": "flat_cut_pvc .xlsx",
-      "productlineFile" : {
+      "file_pattern": "data/flat_cut_pvc.xlsx",
+      "productlineFile": {
         "Letters PVC": {
           "type": "letters_price",
           "country_labels": [
@@ -520,12 +536,21 @@
           "header_row_offset": 1,
           "data_start_offset": 2
         }
+      },
+      "upchargeFile": "data/tq_upcharges_pvc.xlsx",
+      "upchargeFileStructure": {
+        "blocks": {
+          "label": 0,
+          "type": 1,
+          "us": 2,
+          "canada": 3
+        }
       }
     },
     "LAMINATE_ON_FOAM": {
       "productLineName": "Laminate On Foam",
       "productLineKey": "laminate-on-foam",
-      "file_pattern": "laminate_on_foam.xlsx",
+      "file_pattern": "data/laminate_on_foam.xlsx",
       "productlineFile": {
         "Letters": {
           "type": "letters_price",
@@ -596,7 +621,7 @@
       }
     },
     "cast_metal": {
-      "file_pattern": "cast_metal.xlsx",
+      "file_pattern": "data/cast_metal.xlsx",
       "sheets": {
         "Letters-Fonts": {
           "type": "letters_fonts",

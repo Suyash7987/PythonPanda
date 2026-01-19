@@ -76,14 +76,17 @@
 # print("Upcharge:", result)
 
 # ======================================================================================================================
-import pandas as pd
 import json
+from pathlib import Path
+import pandas as pd
 
 
 # ----------------------------
 # LOAD CONFIG
 # ----------------------------
-with open("config.json", "r") as f:
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+with open(BASE_DIR / "config.json", "r") as f:
     CONFIG = json.load(f)
 
 
@@ -92,26 +95,53 @@ with open("config.json", "r") as f:
 # ----------------------------
 def get_upcharge(product_line, material, category, finish_type, country):
     """
-    product_line : 'FLAT_CUT_METAL', 'GEMLEAF_LAMINATE', etc
+    product_line : productLineKey or productLineName
+                   (example: "cut-metal" or "Flat Cut Metal")
     material     : block name from config (Aluminum, Stainless Steel, etc)
     category     : 'Mounting Option', 'Color/Finish:' etc
     finish_type  : 'Double Faced Tape', 'Oxidized Finishes', etc
     country      : 'US' or 'Canada'
     """
 
+    # ---------------------------------
+    # Find the correct category from config
+    # ---------------------------------
+    category_key = None
+    for key, cfg in CONFIG["file_structures"].items():
+        if cfg.get("productLineKey") == product_line:
+            category_key = key
+            break
+        if cfg.get("productLineName") == product_line:
+            category_key = key
+            break
+
+    if category_key is None:
+        raise ValueError(
+            "Unknown product line. Use productLineKey or productLineName."
+        )
+
     # ✅ NEW PATH
-    product_cfg = CONFIG["file_structures"][product_line]
-    print("product_cfg :- ",product_cfg)
+    product_cfg = CONFIG["file_structures"][category_key]
     file_name = product_cfg["upchargeFile"]
     blocks = product_cfg["upchargeFileStructure"]["blocks"]
 
-    if material not in blocks:
+    # ---------------------------------
+    # Find the correct block/columns
+    # ---------------------------------
+    # Case 1: blocks is already the column map (no material level)
+    if all(key in blocks for key in ("label", "type", "us", "canada")):
+        cols = blocks
+    # Case 2: material is provided
+    elif material and material in blocks:
+        cols = blocks[material]
+    # Case 3: only one block exists (material optional)
+    elif len(blocks) == 1:
+        cols = list(blocks.values())[0]
+    else:
         raise ValueError(f"Material/Block not found in config: {material}")
 
-    cols = blocks[material]
-
     # read excel (no headers in file)
-    df = pd.read_excel(file_name, header=None)
+    df = pd.read_excel(BASE_DIR / file_name, header=None)
 
     for row in range(len(df)):
 
@@ -147,13 +177,14 @@ def get_upcharge(product_line, material, category, finish_type, country):
             return float(price)
 
     return None
-metal_result = get_upcharge(
-    product_line="FLAT_CUT_METAL",
-    material="Stainless Steel",
-    category="Mounting Option",
-    finish_type="Double Faced Tape",
-    country="US"
-)
-
-print("Metal Upcharge:", metal_result)
-# Completed The upcharge  
+if __name__ == "__main__":
+    # Simple test call (only runs when this file is executed directly)
+    metal_result = get_upcharge(
+        product_line="flat-cut-pvc",
+        material="PVC",
+        category="Color/Finish:",
+        finish_type="Black (2025)",
+        country="US",
+    )
+    print("Metal Upcharge:", metal_result)
+    

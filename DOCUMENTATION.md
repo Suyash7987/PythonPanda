@@ -1597,13 +1597,13 @@ Total for all items: $68.00
 
 ```
 config.json
-    ├── FlexibleExcelParser.py (reads file_structures)
-    └── upcharges.py (reads file_structures → upchargeFileStructure)
+    ├── src/FlexibleExcelParser.py (reads file_structures)
+    └── src/upcharges.py (reads file_structures → upchargeFileStructure)
 
-Excel Files:
-    ├── flat_cut_metal_aluminum .xlsx (used by FlexibleExcelParser)
-    ├── flat_cut_pvc .xlsx (used by FlexibleExcelParser)
-    ├── tq_upcharges_flat_cut_metal.xlsx (used by upcharges.py)
+Excel Files (in data/):
+    ├── data/flat_cut_metal_aluminum .xlsx (used by FlexibleExcelParser)
+    ├── data/flat_cut_pvc .xlsx (used by FlexibleExcelParser)
+    ├── data/tq_upcharges_flat_cut_metal.xlsx (used by upcharges.py)
     └── ... (other product files)
 ```
 

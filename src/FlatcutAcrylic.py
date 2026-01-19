@@ -1,6 +1,8 @@
+from pathlib import Path
 import pandas as pd
 
-file_name = "flat_cut_metal_aluminum .xlsx"      
+BASE_DIR = Path(__file__).resolve().parent.parent
+file_name = BASE_DIR / "data/flat_cut_metal_aluminum .xlsx"
 # Read Excel file
 
 def get_letters_price(country, thickness, column_number,df):
